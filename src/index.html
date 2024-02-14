@@ -1,0 +1,886 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./tailwind.css" rel="stylesheet" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ALPINE -->
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"
+    ></script>
+
+    <title>Divos, la Casa de la Tripleta</title>
+  </head>
+  <body
+    style="
+      font-family:
+        Open Sans,
+        sans-serif;
+    "
+  >
+    <header>
+      <!-- FIXED NAV -->
+
+      <nav
+        class="hidden md:flex flex-row justify-between items-center text-sm bg-white py-2 px-4 fixed z-50 w-full gap-4 shadow-md"
+      >
+        <div class="h-10">
+          <img
+            src="./img/logos/logo-full.png"
+            alt="Logo"
+            class="object-contain w-full h-full"
+          />
+        </div>
+        <div class="flex flex-row grow justify-center max-w-[1000px]">
+          <div
+            class="flex flex-row grow justify-center gap-0 lg:gap-6 font-normal text-center text-textGray items-center lg:text-base"
+          >
+            <a
+              href="#hero"
+              class="py-1 px-2 hover:bg-textHover hover:text-white hover:rounded-full transition-all ease-in leading-6"
+            >
+              Inicio
+            </a>
+            <a
+              href="#products"
+              class="py-1 px-2 hover:bg-textHover hover:text-white hover:rounded-full transition-all ease-in leading-6 text-nowrap"
+            >
+              Nuestros productos
+            </a>
+            <a
+              href="#about"
+              class="py-1 px-2 hover:bg-textHover hover:text-white hover:rounded-full transition-all ease-in leading-6 text-nowrap"
+            >
+              Acerca de nosotros
+            </a>
+            <a
+              href="#contacto"
+              class="py-1 px-2 hover:bg-textHover hover:text-white hover:rounded-full transition-all ease-in leading-6"
+            >
+              Contacto
+            </a>
+            <a
+              href="#sucursales"
+              class="py-1 px-2 hover:bg-textHover hover:text-white hover:rounded-full transition-all ease-in leading-6"
+            >
+              Ubicaciones
+            </a>
+          </div>
+        </div>
+        <div class="w-ful min-w-[150px]">
+          <button
+            type="button"
+            class="lg:min-w-[170px] bg-primary text-white py-2 px-4 font-bold text-lg flex gap-2 items-center sm:text-xs lg:text-base w-full transition-all ease-in hover:bg-primary/50 focus:ring-4 focus:bg-primary focus:ring-primary/50 active:bg-opacity-0 active:ring-4 active:ring-primary/50 active:text-primary disabled:bg-opacity-50 rounded-full"
+          >
+            <div class="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <span class="text-nowrap">+1 123 456 7890</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- MOBILE NAV -->
+
+      <nav
+        x-data="{ open: false }"
+        class="md:hidden fixed flex-row justify-between items-center text-sm bg-white z-50 w-full shadow-md top-0 flex py-3 px-4"
+      >
+        <div class="flex flex-row items-center justify-between text-sm w-full">
+          <div class="h-10">
+            <img
+              src="./img/logos/logo-full.png"
+              class="object-contain h-full w-full"
+              alt="Logo ícono"
+            />
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2">
+              <button
+                id="call-icon"
+                class="text-lg text-white cursor-pointer transition-all ease-in py-1 px-4 hover:bg-secondary focus:bg-secondary focus:ring-2 focus:ring-secondary/50 active:ring-2 active:ring-primary active:bg-primary/0 active:text-primary disabled:opacity-50 bg-primary rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <button
+                id="bars"
+                x-on:click="open = ! open"
+                class="text-lg text-primary cursor-pointer transition-all ease-in p-1 hover:text-secondary focus:ring-2 focus:ring-secondary focus:text-secondary active:ring-2 active:ring-primary active:text-primary disabled:opacity-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              x-show="open"
+              id="menu"
+              class="flex flex-col grow justify-center absolute top-[64px] right-[0] shadow-lg"
+            >
+              <div
+                class="flex flex-col grow justify-evenly font-medium text-darkGray text-center divide-y z-20 bg-white"
+              >
+                <a
+                  href="#hero"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Home
+                </a>
+                <a
+                  href="#products"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Our work
+                </a>
+                <a
+                  href="#about"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  About us
+                </a>
+                <a
+                  href="#departamentos"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Our services
+                </a>
+                <a
+                  href="#contacto"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Contact
+                </a>
+                <a
+                  href="#sucursales"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Location
+                </a>
+                <a
+                  href="#horarios"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-fourth transition-all ease-in hover:bg-opacity-50"
+                >
+                  Hourarios
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- BANNER PROMOCIONAL -->
+
+      <section>
+        <div
+          class="w-full bg-sixth text-white text-sm sm-banner flex justify-between items-center pt-8 pb-4 md:pt-4 px-4 absolute top-[50px] lg:top-[50px] z-30"
+        >
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <p class="text-center">
+            Hasta el <strong>70%</strong>de <strong>descuento</strong>
+          </p>
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="text-center flex flex-col md:flex-row items-center justify-center h-[550px] md:h-[600px] mt-[110px] md:mt-0 md:top-[20px] bg-secondary bg-center bg-cover bg-no-repeat"
+      >
+        <div
+          class="flex h-1/2 w-full md:h-full md:w-1/2 justify-center items-center pt-0 md:pt-[60px] max-h-[470px] md:max-h-full"
+        >
+          <img
+            src="./img/banner-desktop.png"
+            alt="iPhone 15 Pro"
+            class="object-cover h-full w-full"
+          />
+        </div>
+        <div
+          class="flex flex-col justify-center items-center w-[80%] md:w-1/2 md:pt-24 md:h-full gap-8 text-white h-1/2 py-12 md:p-0"
+        >
+          <div class="w-full md:w-2/3 flex flex-col items-center gap-2">
+            <h1 class="text-4xl font-bold leading-12 md:text-center">
+              Bienvenido a Divo’s
+            </h1>
+            <p class="text-2xl">La Casa de la Tripleta</p>
+          </div>
+          <div class="w-full flex flex-col items-center">
+            <div
+              class="flex flex-row items-center justify-center w-[80%] md:w-1/2 max-w-[342px]"
+            >
+              <button
+                type="submit"
+                class="bg-primary text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full transition-all ease-in hover:bg-primary/50 focus:ring-4 focus:bg-primary focus:ring-primary/50 active:bg-opacity-0 active:ring-4 active:ring-primary/50 disabled:bg-opacity-50 rounded-full"
+              >
+                Contáctanos
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTOS -->
+      <section
+        id="products"
+        class="flex items-center py-16 flex-col bg-primary"
+      >
+        <div class="w-[90%] md:w-full flex flex-col items-center gap-8">
+          <h2 class="font-bold text-center text-2xl md:text-5xl text-darkGray">
+            Nuestros productos
+          </h2>
+
+          <!-- CARDS MOBILE -->
+
+          <div class="w-full">
+            <div
+              id="slideshow-container"
+              class="flex flex-col flex-wrap md:flex-row justify-center gap-8"
+            >
+              <!-- CARD 01 -->
+
+              <div class="md:w-[30%] min-w-[280px]">
+                <div class="w-full flex flex-col bg-white rounded-3xl">
+                  <div class="h-96">
+                    <img
+                      src="./img/products/AA01s.png"
+                      alt="La Original Tripleta"
+                      class="object-cover w-full h-full rounded-t-3xl"
+                    />
+                  </div>
+                  <div class="py-6 px-4">
+                    <h3 class="font-bold text-xl pb-2">La Original Tripleta</h3>
+                    <p class="pb-2 h-12 text-neutralGray line-clamp-2">
+                      ¡Promoción! 3x1 Hasta el 6 de Enero
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 02 -->
+
+              <div class="md:w-[30%] min-w-[280px]">
+                <div class="w-full flex flex-col bg-white rounded-3xl">
+                  <div class="h-96">
+                    <img
+                      src="./img/products/AA02s.png"
+                      alt="Batatas Fritas"
+                      class="object-cover w-full h-full rounded-t-3xl"
+                    />
+                  </div>
+                  <div class="py-6 px-4">
+                    <h3 class="font-bold text-xl pb-2">Batatas Fritas</h3>
+                    <p class="pb-2 h-12 text-neutralGray line-clamp-2">
+                      Con salsa de la casa, queso y bacon
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 03 -->
+
+              <div class="md:w-[30%] min-w-[280px]">
+                <div class="w-full flex flex-col bg-white rounded-3xl">
+                  <div class="h-96">
+                    <img
+                      src="./img/products/AA03s.png"
+                      alt="Papas Divo’s"
+                      class="object-cover w-full h-full rounded-t-3xl"
+                    />
+                  </div>
+                  <div class="py-6 px-4">
+                    <h3 class="font-bold text-xl pb-2">Papas Divo’s</h3>
+                    <p class="pb-2 h-12 text-neutralGray line-clamp-2">
+                      Con Tripleta y salsa de la casa
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full md:w-[280px]">
+            <button
+              type="button"
+              class="bg-secondary text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full transition-all ease-in hover:bg-third focus:ring-4 focus:bg-third focus:ring-third/50 active:bg-secondary active:ring-4 active:ring-secondary/50 disabled:bg-opacity-50 rounded-full text-nowrap"
+            >
+              Descargar catálogo en PDF
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE NOSOTROS -->
+      <section id="about" class="bg-white">
+        <div class="flex flex-col items-center justify-center">
+          <div
+            class="flex flex-row justify-center py-12 md:py-16 w-10/12 max-w-[1200px] md:gap-8"
+          >
+            <div
+              class="flex flex-col items-center justify-center w-[90%] md:w-1/2"
+            >
+              <div class="flex flex-col justify-center items-center h-40 mb-8">
+                <img
+                  src="./img/logos/logo-full.png"
+                  alt="Logo"
+                  class="object-contain w-full h-full"
+                />
+              </div>
+              <div class="flex flex-col gap-4">
+                <div
+                  class="text-secondary flex flex-col gap-4 items-left text-center md:text-left"
+                >
+                  <p>
+                    ¡Bienvenido a Divo's La Casa de la Tripleta! Somos el hogar
+                    de la auténtica tripleta puertorriqueña.
+                  </p>
+                  <p>
+                    Con ingredientes frescos y un toque de creatividad,
+                    ofrecemos una experiencia gastronómica única en un ambiente
+                    acogedor.
+                  </p>
+                  <p>
+                    ¡Ven y disfruta del sabor genuino de Puerto Rico en cada
+                    bocado!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-1/2 h-128 rounded-3xl font-normal hidden md:inline-block"
+            >
+              <img
+                src="img/about-us.png"
+                alt="Fotografía de sucursal"
+                class="object-cover rounded-[60px] min-h-[500px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section class="flex items-center py-16 flex-col bg-darkGray">
+        <div
+          class="w-[90%] md:w-full flex flex-col items-center max-w-[1000px] gap-8"
+        >
+          <h2 class="font-bold text-center text-2xl md:text-5xl text-white">
+            Lo que piensan nuestros clientes
+          </h2>
+          <div class="w-full">
+            <div class="testimonial-container md:flex justify-center gap-8 md:items-start">
+              <!-- CARD 01 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between md:w-[30%]"
+              >
+                <div
+                  class="w-full flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicio, es una persona
+                      responsable y rápida y la recomiendo al 100%<strong
+                        >"</strong
+                      >
+                    </p>
+                    <h4 class="font-semibold">Yomayra Rodriguez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 02 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between md:w-[30%]"
+              >
+                <div
+                  class="w-full flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicio, rápido y
+                      confiable<strong>"</strong>
+                    </p>
+                    <h4 class="font-semibold">Luis Hernandez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 03 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between md:w-[30%]"
+              >
+                <div
+                  class="w-full flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicios y
+                      confianzas,recomendado mil por mil 👏👏👏👍👍💪💪<strong
+                        >"</strong
+                      >
+                    </p>
+                    <h4 class="font-semibold">Licda Yleana Silva Rodriguez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+
+      <section id="contacto" class="flex justify-center bg-darkGray">
+        <div
+          class="flex flex-col md:flex-row py-20 w-[90%] lg:w-9/12 gap-8 text-white max-w-[1000px]"
+        >
+          <div class="flex flex-col gap-8 md:w-1/2">
+            <h2
+              class="font-bold md:mb-10 text-2xl text-center md:text-4xl md:text-left"
+            >
+              ¿Necesitas algo?
+              <br />
+              ¡Envianos un mensaje!
+            </h2>
+            <div class="font-semibold md:inline-block" hidden>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/sms-w.png" alt="Icon message" />
+                <p class="ms-4 break-all">citas@imperioautocorp.com</p>
+              </div>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/call-line-w.png" alt="Icon call" />
+                <div class="flex flex-col gap-y-2 ms-4">
+                  <p>(787) 361 8174</p>
+                </div>
+              </div>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/clock-w.png" alt="Icon clock" />
+                <div class="flex flex-col ms-4 gap-y-4">
+                  <p><strong>Horarios:</strong></p>
+                  <p>Lunes a domingo: 9:00am - 6:00pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMULARIO -->
+
+          <div class="flex flex-col md:w-1/2 gap-4 w-full">
+            @antlers {{ form:contact }} {{ if success }}
+            <div class="bg-green-300 text-white p-2">{{ success }}</div>
+            {{ else }} {{ if errors }}
+            <div class="bg-red-300 text-white p-2">
+              {{ errors }} {{ value }}<br />
+              {{ /errors }}
+            </div>
+            {{ /if }}
+
+            <div class="flex flex-col gap-4 h-full text-white">
+              <div class="flex flex-col md:flex-row gap-4 w-full">
+                <div class="relative md:w-1/2">
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    required
+                    maxlength="32"
+                    pattern="[A-Za-z\s]{1,32}"
+                    title="Nombres"
+                    class="w-full h-12 bg-white p-2 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                    placeholder="Nombres"
+                  />
+                  <label
+                    htmlFor="firstName"
+                    title="Nombres"
+                    data-title="Nombres"
+                  ></label>
+                  {{ if errors }}
+                  <span class="inline-block">
+                    Este campo no puede estar vacío, e.g. John
+                  </span>
+                  {{ /if }}
+                </div>
+                <div class="relative md:w-1/2">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    maxlength="32"
+                    pattern="[A-Za-z]{1,32}"
+                    required
+                    class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                    placeholder="Apellidos"
+                  />
+                  <label
+                    htmlFor="lastName"
+                    title="Apellidos"
+                    data-title="Apellidos"
+                  ></label>
+                  {{ if errors }}
+                  <span class="inline-block"
+                    >Este campo no puede estar vacío, e.g. Doe</span
+                  >
+                  {{ /if }}
+                </div>
+              </div>
+
+              <div class="col-span-2 relative">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  required
+                  placeholder="Correo electrónico"
+                />
+                <label
+                  for="email"
+                  title="Correo electrónico"
+                  data-title="Correo electrónico"
+                ></label>
+                {{ if errors }}
+                <span class="inline-block">
+                  Este campo no puede estar vacío, e.g. correo@ejemplo.com
+                </span>
+                {{ /if }}
+              </div>
+
+              <div class="col-span-2 relative">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                  pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+                  required
+                  placeholder="Número telefónico"
+                />
+
+                <label htmlFor="phone" title="phone" data-title="phone"></label>
+                {{ if errors }}
+                <span class="inline-block">
+                  Este campo no puede estar vacío, e.g. XXX XXX XXXX
+                </span>
+                {{ /if }}
+              </div>
+              <div class="col-span-2 row-span-6 h-full relative">
+                <textarea
+                  name="note"
+                  id="note"
+                  required
+                  class="w-full h-32 bg-white p-4 rounded-lg resize-none invalid:border-pink-500 text-mediumGray invalid:text-pink-600"
+                  placeholder="Escribe un mensaje"
+                ></textarea>
+                <label
+                  htmlFor="message"
+                  title="Escribe un mensaje"
+                  data-title="Escribe un mensaje"
+                ></label>
+              </div>
+              {{ if errors }}
+              <span class="inline-block">
+                Este campo no puede estar vacío, e.g. correo@ejemplo.com
+              </span>
+              {{ /if }}
+            </div>
+
+            <input
+              type="text"
+              class="hidden"
+              name="{{ honeypot ?? 'honeypot' }}"
+            />
+            <div
+              class="mt-4 opacity-50 transition-opacity hover:opacity-100 hover:ease-in"
+            >
+              <button
+                type="submit"
+                class="bg-primary md:w-1/2 text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full hover:bg-primary transition-all ease-in"
+              >
+                Send message
+              </button>
+            </div>
+            {{ /if }} {{ /form:contact }} @endantlers
+          </div>
+        </div>
+      </section>
+
+      <!-- HORARIOS -->
+
+      <section id="horarios" class="bg-white">
+        <div
+          class="flex flex-col items-center text-neutralGray gap-y-4 md:hidden text-lg font-semibold max-w-[1000px] py-16 px-4"
+        >
+          <p class="font-bold text-black text-2xl">Horarios:</p>
+          <p>Lunes a domingo: 9:00am - 6:00pm</p>
+        </div>
+      </section>
+
+      <!-- SUCURSALES -->
+
+      <section id="sucursales" class="flex justify-center">
+        <div
+          class="w-full md:w-9/12 flex flex-col md:flex-row justify-center py-16 gap-10"
+        >
+          <h2
+            class="font-bold text-2xl text-center md:text-left md:text-5xl py-4 md:hidden"
+          >
+            ¿Tienes dudas? ¡Visitanos!
+          </h2>
+
+          <div class="md:w-1/2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13827.744745657252!2d-95.4740074!3d29.9525141!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c9558c67291d%3A0x40db57f893092f95!2sTriple%20I!5e0!3m2!1sen!2sus!4v1705592685337!5m2!1sen!2sus"
+              width="100%"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div
+            class="md:w-1/2 text-darkGray flex-col justify-center items-center gap-12 hidden md:flex"
+          >
+            <h2 class="font-bold text-2xl text-center md:text-left md:text-5xl">
+              ¿Tienes dudas? ¡Visitanos!
+            </h2>
+            <p class="text-2xl">San Juan, Puerto Rico,00926</p>
+          </div>
+          <div
+            class="w-full text-lg py-4 px-4 md:hidden font-semibold text-neutralGray"
+          >
+            <p class="font-bold text-darkGray leading-8 break-all">
+              San Juan, Puerto Rico,00926
+            </p>
+            <p>Teléfono: (787) 361 8174</p>
+            <p class="break-all">E-mail: citas@imperioautocorp.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+
+      <section class="flex justify-center bg-mediumGray">
+        <div
+          class="flex flex-col items-center w-[90%] md:w-9/12 py-16 text-white max-w-[1000px]"
+        >
+          <h2 class="font-bold mb-10 text-2xl md:text-4xl">FAQs</h2>
+          <div class="divide-y w-full">
+            <!-- QUESTION 1 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿En donde se encuentran ubicados?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                Contamos con 2 sucursales en localizadas en Puerto Rico, USA.
+                <br />
+
+                Sucursal Corozal: Carretera 818 KM 0.8 Bo. Cibuco.
+                <br />
+
+                Sucursal Morovis: Calle Principal 44, Morovis
+              </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Cómo puedo contactarlos?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Los productos tienen garantía?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Puedo apartar un producto?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Qué tipo de productos manejan?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <section
+        class="bg-darkGray flex flex-col justify-center items-center py-16"
+      >
+        <div class="w-[90%] max-w-[1000px]">
+          <div
+            class="w-full flex flex-col md:flex-row md:items-center justify-evenly pb-16"
+          >
+            <div class="flex flex-col items-center gap-6 md:max-w-[255px]">
+              <div
+                class="justify-self-center self-center flex justify-center items-center h-20"
+              >
+                <img
+                  src="img/logos/logo-full.png"
+                  alt="Ícono del logo"
+                  class="object-ccover h-full"
+                />
+              </div>
+              <div
+                class="text-white opacity-50 text-5xl flex flex-row justify-evenly mb-6 md:mb-0 gap-8 w-2/3"
+              >
+                <img src="./img/icons/facebook-w.png" alt="Icon facebook" />
+                <img src="./img/icons/whatsapp-w.png" alt="Icon whatsapp" />
+                <img src="./img/icons/instagram-w.png" alt="Icon facebook" />
+              </div>
+            </div>
+            <div
+              class="flex flex-col justify-center gap-y-4 mb-4 md:mb-0 text-white"
+            >
+              <h3 class="font-bold">Mapa del sitio</h3>
+              <ul class="grid gap-y-4 underline opacity-60">
+                <li class="sm:hidden"><a href="#hero">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Sobre nosotros</a></li>
+                <li><a href="#departamentos">Marcas</a></li>
+              </ul>
+            </div>
+            <div class="text-white opacity-60 flex flex-col justify-center">
+              <ul class="grid gap-y-4 underline">
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="opacity-50 w-[90%]" />
+        <span
+          class="sm:text-center text-white opacity-60 pt-8 mb-8 w-[90%] md:w-3/5"
+          >2024, Imperio Auto Corp., Todos los derechos reservados.</span
+        >
+      </section>
+    </footer>
+  </body>
+</html>
